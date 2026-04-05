@@ -32,7 +32,7 @@ const PRESIDENT_CANDIDATES = [
     names: ["Mostafa Mostafa", "Katelyn Jang"],
     type: "team",
     details: [
-      { name: "Mostafa Mostafa", year: "3rd Year", faculty: "Faculty of Science", role: "Co-President" },
+      { name: "Mostafa", year: "3rd Year", faculty: "Faculty of Science", role: "Co-President" },
       { name: "Katelyn Jang", year: "3rd Year", faculty: "Sauder School of Business", role: "Co-President" },
     ],
     tagline: "The year of your peak university memories starts here. Let's build it together ✨",
