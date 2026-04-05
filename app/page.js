@@ -389,6 +389,82 @@ export default function NominationForm() {
           <p style={{ color: "#6B6560", fontSize: 15, margin: "0 0 6px", lineHeight: 1.6, maxWidth: 440, marginLeft: "auto", marginRight: "auto" }}>Every year, someone steps up and changes how this club runs. This is where that starts. If you've been thinking about it, now's the time.</p>
         </div>
 
+        {/* Navigation Cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 20 }}>
+          <a
+            href="/candidates"
+            style={{
+              position: "relative",
+              display: "block",
+              padding: "22px 20px",
+              borderRadius: 14,
+              background: `linear-gradient(135deg, ${COLORS.navy} 0%, #2A3F52 60%, ${COLORS.red}44 100%)`,
+              textDecoration: "none",
+              overflow: "hidden",
+              transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease",
+              boxShadow: `0 4px 20px ${COLORS.navy}30`,
+              cursor: "pointer",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px) scale(1.02)"; e.currentTarget.style.boxShadow = `0 8px 32px ${COLORS.navy}40`; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = `0 4px 20px ${COLORS.navy}30`; }}
+          >
+            {/* Decorative circles */}
+            <div style={{ position: "absolute", top: -20, right: -20, width: 80, height: 80, borderRadius: "50%", background: `${COLORS.red}20`, pointerEvents: "none" }} />
+            <div style={{ position: "absolute", bottom: -10, right: 30, width: 40, height: 40, borderRadius: "50%", background: `${COLORS.mint}15`, pointerEvents: "none" }} />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <div style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14, backdropFilter: "blur(4px)" }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="9" cy="7" r="4" stroke="white" strokeWidth="2"/>
+                  <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 18, color: COLORS.white, marginBottom: 4, lineHeight: 1.2 }}>Meet the Candidates</div>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.4 }}>Read their platforms before you vote</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 12, fontSize: 12, fontWeight: 600, color: COLORS.mint, fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}>
+                <span>View all</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke={COLORS.mint} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="/vote"
+            style={{
+              position: "relative",
+              display: "block",
+              padding: "22px 20px",
+              borderRadius: 14,
+              background: `linear-gradient(135deg, ${COLORS.red} 0%, ${COLORS.red}DD 60%, ${COLORS.orange}88 100%)`,
+              textDecoration: "none",
+              overflow: "hidden",
+              transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease",
+              boxShadow: `0 4px 20px ${COLORS.red}30`,
+              cursor: "pointer",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px) scale(1.02)"; e.currentTarget.style.boxShadow = `0 8px 32px ${COLORS.red}40`; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = `0 4px 20px ${COLORS.red}30`; }}
+          >
+            {/* Decorative circles */}
+            <div style={{ position: "absolute", top: -15, right: -15, width: 70, height: 70, borderRadius: "50%", background: `${COLORS.orange}25`, pointerEvents: "none" }} />
+            <div style={{ position: "absolute", bottom: -8, left: 20, width: 35, height: 35, borderRadius: "50%", background: "rgba(255,255,255,0.08)", pointerEvents: "none" }} />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <div style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(255,255,255,0.18)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14, backdropFilter: "blur(4px)" }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M20 12a8 8 0 11-16 0 8 8 0 0116 0z" stroke="white" strokeWidth="2"/>
+                </svg>
+              </div>
+              <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 18, color: COLORS.white, marginBottom: 4, lineHeight: 1.2 }}>Cast Your Vote</div>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.75)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.4 }}>Election Day · Tue Apr 7</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 12, fontSize: 12, fontWeight: 600, color: COLORS.white, fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}>
+                <span>Vote now</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
         {/* Timeline */}
         <div style={{ background: COLORS.white, borderRadius: 12, padding: "22px 24px", marginBottom: 20, boxShadow: "0 2px 12px rgba(30,45,61,0.04)" }}>
           <div style={{ fontSize: 13, fontWeight: 700, color: COLORS.navy, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16, fontFamily: "'DM Sans', sans-serif" }}>How this works</div>
