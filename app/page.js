@@ -268,7 +268,7 @@ export default function NominationForm() {
   const [tresQErrors, setTresQErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
 
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby-IKxjzLLciRO531_hF1ewGepvUhnf_Mxs7e7NUz98qiU872SWdLeFQCi3bQGwQu0A/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3mit3fX2ZsdkCkWmjMSnMHabphf264p_1LHL5CH9JOLEOsVs4DmcoyALZ-0v27tKW/exec";
 
   const update = (field, value) => {
     setForm((prev) => ({ ...prev, [field]: value }));
