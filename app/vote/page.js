@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const COLORS = {
   navy: "#1E2D3D",
@@ -13,9 +13,6 @@ const COLORS = {
   darkText: "#1E2D3D",
 };
 
-// Voting opens April 7, 2026, 6 PM PST
-const UNLOCK_TIME = new Date("2026-04-07T18:00:00-07:00").getTime();
-
 function LogoMark({ size = 48 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
@@ -25,117 +22,6 @@ function LogoMark({ size = 48 }) {
       <path d="M50 82 C62 78, 68 64, 60 54 C56 50, 50 52, 46 56 C38 66, 40 78, 50 82Z" fill={COLORS.orange} />
       <path d="M18 50 C22 62, 36 68, 46 60 C50 56, 48 50, 44 46 C34 38, 22 40, 18 50Z" fill={COLORS.navy} />
     </svg>
-  );
-}
-
-function LockedVotePage() {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    const tick = () => {
-      const diff = Math.max(0, UNLOCK_TIME - Date.now());
-      setTime({
-        days: Math.floor(diff / 86400000),
-        hours: Math.floor((diff % 86400000) / 3600000),
-        minutes: Math.floor((diff % 3600000) / 60000),
-        seconds: Math.floor((diff % 60000) / 1000),
-      });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  return (
-    <div style={{
-      minHeight: "100vh",
-      background: `linear-gradient(135deg, ${COLORS.cream} 0%, #EDE8E3 100%)`,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      fontFamily: "'DM Sans', sans-serif", padding: 20,
-    }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
-      <style>{`@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }`}</style>
-      <div style={{ textAlign: "center", maxWidth: 480 }}>
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
-          <LogoMark size={56} />
-        </div>
-
-        {/* Lock icon */}
-        <div style={{
-          width: 64, height: 64, borderRadius: "50%",
-          background: `${COLORS.navy}10`, border: `2px solid ${COLORS.navy}15`,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          margin: "0 auto 20px",
-        }}>
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="11" width="18" height="11" rx="2" stroke={COLORS.navy} strokeWidth="2" />
-            <path d="M7 11V7a5 5 0 0110 0v4" stroke={COLORS.navy} strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </div>
-
-        <div style={{
-          display: "inline-block",
-          padding: "6px 16px", borderRadius: 100, marginBottom: 20,
-          background: `${COLORS.orange}12`, border: `1px solid ${COLORS.orange}25`,
-          fontSize: 12, fontWeight: 700, color: COLORS.orange,
-          textTransform: "uppercase", letterSpacing: "0.08em",
-        }}>Voting Not Yet Open</div>
-
-        <h1 style={{
-          fontFamily: "'DM Serif Display', serif", fontSize: 32,
-          color: COLORS.navy, marginBottom: 12, fontWeight: 400,
-        }}>Voting opens on Election Day</h1>
-        <p style={{
-          color: "#6B6560", lineHeight: 1.6, fontSize: 15, marginBottom: 32,
-        }}>
-          Voting will be available starting Tuesday, April 7 at 6:00 PM during the in-person meeting. Come prepared — read the candidate platforms first.
-        </p>
-
-        {/* Countdown */}
-        <div style={{
-          display: "flex", justifyContent: "center", gap: 16, marginBottom: 36,
-        }}>
-          {[
-            { val: time.days, label: "Days" },
-            { val: time.hours, label: "Hours" },
-            { val: time.minutes, label: "Min" },
-            { val: time.seconds, label: "Sec" },
-          ].map((u, i) => (
-            <div key={i} style={{
-              display: "flex", flexDirection: "column", alignItems: "center", gap: 4,
-            }}>
-              <div style={{
-                width: 56, height: 56, borderRadius: 12,
-                background: COLORS.white, border: `2px solid #E5E1DC`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontFamily: "'DM Serif Display', serif", fontSize: 24,
-                color: COLORS.navy, fontWeight: 400,
-                boxShadow: "0 2px 8px rgba(30,45,61,0.04)",
-              }}>{String(u.val).padStart(2, "0")}</div>
-              <span style={{
-                fontSize: 10, fontWeight: 600, color: COLORS.midGray,
-                textTransform: "uppercase", letterSpacing: "0.1em",
-              }}>{u.label}</span>
-            </div>
-          ))}
-        </div>
-
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="/candidates" style={{
-            padding: "12px 24px", borderRadius: 10,
-            background: `linear-gradient(135deg, ${COLORS.navy}, #2A3F52)`,
-            color: COLORS.white, fontSize: 14, fontWeight: 600,
-            textDecoration: "none", fontFamily: "'DM Sans', sans-serif",
-          }}>Meet the Candidates</a>
-          <a href="/" style={{
-            padding: "12px 24px", borderRadius: 10,
-            background: COLORS.white, border: `2px solid #E5E1DC`,
-            color: COLORS.navy, fontSize: 14, fontWeight: 600,
-            textDecoration: "none", fontFamily: "'DM Sans', sans-serif",
-          }}>Back to Home</a>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -168,16 +54,6 @@ export default function VotePage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [duplicateError, setDuplicateError] = useState(false);
-  const [unlocked, setUnlocked] = useState(false);
-
-  useEffect(() => {
-    const check = () => setUnlocked(Date.now() >= UNLOCK_TIME);
-    check();
-    const id = setInterval(check, 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  if (!unlocked) return <LockedVotePage />;
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3mit3fX2ZsdkCkWmjMSnMHabphf264p_1LHL5CH9JOLEOsVs4DmcoyALZ-0v27tKW/exec";
 
